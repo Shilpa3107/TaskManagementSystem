@@ -21,7 +21,7 @@ model Task {
   id          String   @id @default(uuid())
   title       String
   description String?
-  status      String   @default("TODO") // TODO, IN_PROGRESS, DONE
+  status      String   @default("TODO")
   userId      String
   user        User     @relation(fields: [userId], references: [id])
   createdAt   DateTime @default(now())
