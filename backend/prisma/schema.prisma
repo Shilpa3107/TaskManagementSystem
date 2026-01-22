@@ -7,23 +7,22 @@ datasource db {
   url      = "file:./dev.db"
 }
 
+
 model User {
-  id           String   @id @default(uuid())
-  email        String   @unique
-  password     String
-  refreshToken String?
-  tasks        Task[]
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id            String   @id @default(uuid())
+  email         String   @unique
+  password      String
+  refreshToken  String?
+  tasks         Task[]
+  createdAt     DateTime @default(now())
 }
 
 model Task {
-  id          String   @id @default(uuid())
-  title       String
+  id        String   @id @default(uuid())
+  title     String
   description String?
-  status      String   @default("TODO")
-  userId      String
-  user        User     @relation(fields: [userId], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  status    Boolean @default(false)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
 }
